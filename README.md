@@ -1,5 +1,5 @@
 # booking-app
-learning go with Nana
+learning go
 
 
 
