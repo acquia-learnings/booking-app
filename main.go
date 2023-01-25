@@ -1,6 +1,6 @@
 package main
 // This means we will be creating an executable in bin directory
-//This is not the only place where we can make changes
+//This is not the only place where we can make changes.
 
 import "fmt"
 
