@@ -1,4 +1,6 @@
 package main
+// This means we will be creating an executable
+
 
 import "fmt"
 
