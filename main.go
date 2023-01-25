@@ -1,5 +1,5 @@
 package main
-// This means we will be creating an executable
+// This means we will be creating an executable in bin directory
 
 
 import "fmt"
