@@ -80,39 +80,39 @@ Since arrays in `go` have fixed sizes, we have a better option called `Slices` w
 
 `_` a.k.a. `Blank Identifier`. These are used to ignore variables. Thus are mainly used whenever we don't want to use a variable. Keep in mind that, in `go`, we have to explicitly call out unused variables.
 
-By default, there is sequential code execution in `go`. Thus running the `main` goroutine, by default. But we can improve the efficiency of our code by making it concurrent. We can introduce concurrent behavior by adding the keyword `go` in front of the function. It starts a new goroutine. Keep in mind, `main` thread/goroutine **doesn't wait** for other concurrent functions to finish by default. Thus we also need synchronization between the goroutines, we can use `WaitGroup` under `sync` package to provide us with basic synchronization functionality.
+By default, there is sequential code execution in `go`. Thus running the `main` goroutine, by default. But we can improve the efficiency of our code by making it concurrent. We can introduce concurrent behavior by adding the keyword `go` in front of the function. It starts a new goroutine. Keep in mind, `main` thread/goroutine **doesn't wait** for other concurrent functions to finish by default. Thus we also need synchronization between the goroutines, we can use `WaitGroup` under the `sync` package to provide us with basic synchronization functionality.
 
 A little more about goroutine:
 
-`goroutine` is a lightweight thread managed by go runtime. 
+`goroutine` is a lightweight thread managed by go runtime.
 
-Why threads/goroutines in go are a better choice?
+Why are threads/goroutines in go are a better choice?
 
-Unlike traditional threads, which are:
+Unlike traditional `OS threads`, which are:
 
-  expensive -> thus have hight startup time
+- expensive -> thus have a high startup time
   
-  heavyweight -> needs more hardware resources
+- heavyweight -> needs more hardware resources
 
-  actually managed by kernel and are hardware dependent
+- managed by kernel and are hardware dependent
+
+- there is no way of easy communication between threads
 
   ![image](images/java_threads.png)
 
 `go` has `green thread` which is:
 
-  an abstraction of actual thread
+- an abstraction of the actual thread
 
-  managed by go runtime, thus we only interact with high level goroutines
+- managed by go runtime, thus we only interact with high level goroutines
 
-  cheaper and lightweight
+- cheaper and lightweight
+
+- where go has built-in functionality of channel to allow easy and safe communication between goroutines (They also help us handle concurrency issues when threads have shared data or are dependent on each other)
 
   ![image](images/green_threads.png)
 
 Thus, we can run millions of goroutines without affecting performance.
-
-  
-
-
 
 ## Other stuff
 
