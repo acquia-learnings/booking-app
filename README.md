@@ -90,13 +90,23 @@ Why threads/goroutines in go are a better choice?
 
 Unlike traditional threads, which are:
 
-  expensive -> thus have slow startup time
+  expensive -> thus have hight startup time
+  
+  heavyweight -> needs more hardware resources
 
-  heavy weight -> needs more hardware resources
+  actually managed by kernel and are hardware dependent
 
-`go` has `green thread` which is an abstraction of actual thread:
+`go` has `green thread` which is:
 
-![image](images/green_threads.png)
+  an abstraction of actual thread
+
+  managed by go runtime, thus we only interact with high level goroutines
+
+  cheaper and lightweight
+
+  ![image](images/green_threads.png)
+
+Thus, we can run millions of goroutines without affecting performance.
 
 
 
