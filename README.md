@@ -83,7 +83,11 @@ Arrays in `go` have a **fixed size**. And, all the elements inside it need to be
 
 Since arrays in `go` have fixed sizes, we have a better option called `Slices` while dealing with a variable length which can be resized when needed.
 
-`Slices` are abstractions of Arrays. They too are index based. But, are of variable length and can get sub-array of their own.
+`Slices` are abstractions of Arrays. They too are index based. But, are of variable length and can get sub-array of their own. Even here, all the elements need to be of the **same type**.
+
+There is Map, and also slices of maps. The key-value pairs of maps need to be of the **same type**. For example, we cannot have keys as `string` and values as `int` in a map.
+
+`go` also supports custom data structures that can be defined by the user.
 
 `_` a.k.a. `Blank Identifier`. These are used to ignore variables. Thus are mainly used whenever we don't want to use a variable. Keep in mind that, in `go`, we have to explicitly call out unused variables.
 
