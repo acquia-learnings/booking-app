@@ -8,7 +8,7 @@ learning go
 go mod init <project_name>
 ```
 
-This helps in initializing the project.
+This helps in initializing the `go` project.
 
 What happens here?
 
@@ -19,20 +19,27 @@ What happens here?
 In `go`, everything is organized into packages. And, there can be multiple files in a package.
 
 Also, you need to define **entry point** of the application.
+
 So the compiler knows where to start from among the multiple files that are present.
+
 Keep in mind that as there can be only one entry point thus we can have **only one** `main` function.
 
 If we plan on using any method/functionality, we need to ensure that we explicitly import the corresponding package.
 
-So when we install go, we do get a set of standard packages which are themselves collections_of source_ files*.
+So when we install go, we do get a set of standard packages which are themselves collections of source files.
+
 Since they are installed by default as part of standard packages, we can directly start using them.
 
 Which functionalities are present in which package?
 
 - Read official documentation about the corresponding package or Google it.
+
 - In MacOS, if you hover over the name of the package, and later, `cmd + click` on it in your IDE, it will
+  
   - take you to the official documentation
+  
   - also, open the package's source code available on your local machine
+
 - With experience, you will get better at knowing the most popular packages and their functionalities/usages.
 
 ```gotemplate
@@ -49,11 +56,11 @@ main (package)
 
 Here, the run command would look like `go run main.go helper.go`. It would be cumbersome to write the names of all files under the same package while running the go command, thus we can opt for `go run .`, which means running all the files in the current folder.
 
-To keep things simpler, always group files under the same package in the same folder.
+**Note:** To keep things simpler, always group files under the same package in the same folder.
 
 What happens here?
 
-- It looks for the main function and starts executing the lines underneath it one by one.
+- It looks for the `main` function and starts executing the lines underneath it one by one.
 
 What else?
 
@@ -66,7 +73,7 @@ What else?
   ├── Package (declaration outside all functions thus can be used anywhere in the same package)
   └── Global (declaration outside all functions and capitalized first letter thus can be used everywhere across all packages)
   
-Note: If you do plan on accessing variables in other packages, receiving them as an argument could be one of the best and simplest strategies. With this strategy, you might be able to access package-level variables across other packages (Usually this behavior is shown by global-level variables).
+**Note:** If you do plan on accessing variables in other packages, receiving them as an argument could be one of the best and simplest strategies. With this strategy, you might be able to access package-level variables across other packages (Usually this behavior is shown by global-level variables).
 
 `go` also ensures to maintain *better code quality* by throwing compilation errors if:
 
@@ -120,7 +127,9 @@ Thus, we can run millions of goroutines without affecting performance.
 go list ... 
 ```
 
-Executing in any folder lists all the packages, including packages of the standard library first followed by external
+What happens here?
+
+Executing the above command in any folder lists all the packages, including packages of the standard library first followed by external
 libraries in your go workspace.
 
 ```gotemplate
