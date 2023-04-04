@@ -96,6 +96,8 @@ Unlike traditional threads, which are:
 
 `go` has `green thread` which is an abstraction of actual thread:
 
+![image](images/green_threads.png)
+
 
 
 ## Other stuff
