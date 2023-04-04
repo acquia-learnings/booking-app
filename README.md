@@ -96,6 +96,8 @@ Unlike traditional threads, which are:
 
   actually managed by kernel and are hardware dependent
 
+  ![image](images/java_threads.png)
+
 `go` has `green thread` which is:
 
   an abstraction of actual thread
@@ -107,6 +109,8 @@ Unlike traditional threads, which are:
   ![image](images/green_threads.png)
 
 Thus, we can run millions of goroutines without affecting performance.
+
+  
 
 
 
