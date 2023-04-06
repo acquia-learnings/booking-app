@@ -133,8 +133,7 @@ go list ...
 
 What happens here?
 
-Executing the above command in any folder lists all the packages, including packages of the standard library first followed by external
-libraries in your go workspace.
+Executing the above command in any folder lists all the packages, including packages of the standard library first followed by external libraries in your go workspace.
 
 ```gotemplate
 go install app
@@ -174,3 +173,15 @@ always be set to the installation directory.
 **Note:** It is possible to install the Go tools in a different location. This can be done by setting the `GOROOT`
 environment variable to point to the directory in which it was installed, although this is not recommended as it comes
 preset with the tooling.
+
+Summary:
+
+`GOPATH` is the path used where additional/custom packages' source code and binaries are downloaded and stored that are not part of standard packages (that are installed during installation of `go`)
+
+`GOROOT` is the path where standard packages' source code and binaries are downloaded and stored during the installation of `go`. Thus if you plan on installing `go` at any other location other than the default i.e. `/usr/local/go`, you will have to update `GOROOT` to point toward that path.
+
+**Note:** Suppose multiple paths are set in `GOPATH` variable, then `go get` would still install the packages in the first path that is defined in `GOPATH` but while searching for source code files of custom packages all the paths defined in `GOPATH` are looked for before downloading the package (again in the first path defined in `GOPATH`).
+
+Some fine details:
+
+`pkg` directory is where intermediate binaries are stored. They are mainly created so that they need not be re-compiled every time. So when we compile our `go` application, `go` checks if any of the source files in `pkg` directory have changed since the last time it compiled them. If it hasn't, then it's not going to recompile that package, it just goes ahead and links them into the binary it creates.
