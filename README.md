@@ -46,7 +46,7 @@ Which functionalities are present in which package?
 go run <file_name>
 ```
 
-This helps in compiling and running the `go` file.
+This helps in compiling and running the `go` file. And it also compiles in any third-party libraries. So the standard/custom packages that are defined in `import` section are compiled as well.
 
 While running multiple files under the same package, we need to ensure that all of them are defined in the run command. For example:
 
@@ -74,6 +74,20 @@ What else?
   └── Global (declaration outside all functions and capitalized first letter thus can be used everywhere across all packages)
   
 **Note:** If you do plan on accessing variables in other packages, receiving them as an argument could be one of the best and simplest strategies. With this strategy, you might be able to access package-level variables across other packages (Usually this behavior is shown by global-level variables).
+
+```gotemplate
+go build <package_path>
+```
+
+Here if it finds a main package with a main function, then it's going to compile that as an executable. We can then go ahead and run that (using `./<executable_name>`).
+
+```gotemplate
+go install <package_path>
+```
+
+It is expected to be pointed to a package that has an entry point and it installs that package into your `bin` folder. By creating an executable and adding it to `bin` directory. 
+
+**Note:** In case, we have a [standard directory structure](#directory-structure),and suppose we run the following command `go install github.com/amanjoshicodes/package_name` while being in `/code` directory, it would add the executable to `/code/bin` directory. Whereas, if the [standard directory structure](#directory-structure) is not followed and we still run the command, it would just add the executable to the `bin` directory of `GOPATH`.
 
 `go` also ensures to maintain *better code quality* by throwing compilation errors if:
 
@@ -185,3 +199,18 @@ Summary:
 Some fine details:
 
 `pkg` directory is where intermediate binaries are stored. They are mainly created so that they need not be re-compiled every time. So when we compile our `go` application, `go` checks if any of the source files in `pkg` directory have changed since the last time it compiled them. If it hasn't, then it's not going to recompile that package, it just goes ahead and links them into the binary it creates.
+
+## Directory Structure
+
+A general example of standard directory structure:
+
+```shell
+code
+  ├── pkg 
+  ├── bin 
+  └── src
+        └── github.com #Version control
+              └── amanjoshicodes #Organization or User
+                    └── package_name
+                          └── go files 
+```
