@@ -72,7 +72,11 @@ What else?
   ├── Local (declaration within function thus can be used within the function)
   ├── Package (declaration outside all functions thus can be used anywhere in the same package)
   └── Global (declaration outside all functions and capitalized first letter thus can be used everywhere across all packages)
-  
+
+**Note:** At the package level, you cannot use this colon equals syntax, you have to use the full declaration syntax.
+
+**Note:** we can't redeclare a variable. So within the same scope, we can't initialize that variable twice, but we can continue to reassign values to it, but we can shadow them. So if we declare a variable in a package scope, for example, we can read declare that in a function scope, and that's going to shadow the variable at the higher level of scope.
+
 **Note:** If you do plan on accessing variables in other packages, receiving them as an argument could be one of the best and simplest strategies. With this strategy, you might be able to access package-level variables across other packages (Usually this behavior is shown by global-level variables).
 
 ```gotemplate
@@ -92,6 +96,37 @@ It is expected to be pointed to a package that has an entry point and it install
 `go` also ensures to maintain *better code quality* by throwing compilation errors if:
 
 - we declare a variable or package and don't use it.
+
+`const` which represents constants in `go` has the following characteristics:
+
+- It has to be assignable at compile time. For example below code won't work:
+
+  ```gotemplate
+  // in order to determine the sine of that value, that actually requires the function to execute, which is not allowable at compile time.
+  const myConst float64 = math.Sin(1.57)
+  ```
+
+- It allows implicit conversions for **untyped** constants:
+
+  ```gotemplate
+  // Type is not defined here
+  const a = 16
+  var b int16 = 27
+  // works because compiler, when it sees constant it just replaces every instance. We're taking a literal 42, and adding an int 16 to it.
+  fmt.Printf("%v, %T\n", a + b, a + b)
+  ```
+
+  **Note:** Above behavior is only possible with constants, trying out the above scenario with a variable would throw an error.
+
+- It supports enumerated constants:
+  
+  ```gotemplate
+  // Iota is a counter that we can use when we're creating enumerated constants. These are usually used at package level.
+  // It's initial value is int 0
+  const a = iota
+  ```
+
+  Read more about it [here][1]
 
 Arrays in `go` have a **fixed size**. And, all the elements inside it need to be of the **same type**.
 
@@ -214,3 +249,5 @@ code
                     └── package_name
                           └── go files 
 ```
+
+[1]: https://www.gopherguides.com/articles/how-to-use-iota-in-golang
